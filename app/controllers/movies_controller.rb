@@ -7,11 +7,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    case params[:id]
-      when "title_header" then
+    case params[:sortBy]
+      when "title" then
         @movies = Movie.order("title")
-      when "release_date_header" then
+	@titleHilite = "hilite"
+      when "release_date" then
         @movies = Movie.order("release_date")
+	@releaseDateHilite = "hilite"
       else
         @movies = Movie.all
     end
